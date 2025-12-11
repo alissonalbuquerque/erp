@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('cost_centers', function (Blueprint $table) {
             $table->id();
+
+            $table->string('name', 150);
+            $table->string('department', 150)->nullable();
+
             $table->timestamps();
         });
 

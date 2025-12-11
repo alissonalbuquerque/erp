@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
+
+            $table->string('name', 255);
+            $table->string('document', 20)->nullable();   // CNPJ ou CPF
+            $table->string('email', 150)->nullable();
+            $table->string('phone', 50)->nullable();
+            $table->text('address')->nullable();
+            $table->string('bank_account', 255)->nullable(); // dados bancários simples
+
             $table->timestamps();
         });
 

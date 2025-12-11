@@ -13,6 +13,25 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+
+            // Foreign Keys
+            $table->foreignId('payable_id')
+                ->constrained('payables')
+                ->cascadeOnDelete();
+
+            $table->foreignId('bank_account_id')
+                ->nullable()
+                ->constrained('bank_accounts')
+                ->nullOnDelete();
+
+            // Dados do pagamento
+            $table->date('payment_date');
+            $table->decimal('amount_paid', 12, 2);
+
+            $table->string('payment_method', 50)->nullable();  // PIX, boleto, etc.
+            $table->string('transaction_ref', 150)->nullable();
+            $table->text('notes')->nullable();
+
             $table->timestamps();
         });
 
@@ -33,7 +52,6 @@ return new class extends Migration
         //     FOREIGN KEY (payable_id) REFERENCES payables(id),
         //     FOREIGN KEY (bank_account_id) REFERENCES bank_accounts(id)
         // );
-
     }
 
     /**

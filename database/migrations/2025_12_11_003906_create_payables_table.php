@@ -13,6 +13,38 @@ return new class extends Migration
     {
         Schema::create('payables', function (Blueprint $table) {
             $table->id();
+            
+            // Foreign Keys
+            $table->foreignId('supplier_id')
+                ->constrained('suppliers')
+                ->cascadeOnDelete();
+
+            $table->foreignId('category_id')
+                ->nullable()
+                ->constrained('categories')
+                ->nullOnDelete();
+
+            $table->foreignId('cost_center_id')
+                ->nullable()
+                ->constrained('cost_centers')
+                ->nullOnDelete();
+
+            // Dados principais
+            $table->string('description', 255);
+            $table->string('document_number', 50)->nullable();
+
+            $table->decimal('amount_original', 12, 2);
+            $table->decimal('amount_current', 12, 2);
+
+            // Datas
+            $table->date('issue_date')->nullable();
+            $table->date('due_date');
+            $table->date('payment_date')->nullable();
+
+            // Status e observação
+            $table->string('status', 20)->default('open');
+            $table->text('notes')->nullable();
+            
             $table->timestamps();
         });
 
@@ -41,7 +73,6 @@ return new class extends Migration
         //     FOREIGN KEY (category_id) REFERENCES categories(id),
         //     FOREIGN KEY (cost_center_id) REFERENCES cost_centers(id)
         // );
-
     }
 
     /**
