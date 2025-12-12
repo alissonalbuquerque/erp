@@ -18,9 +18,22 @@ class SupplierFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
+    {   
+        $names = [
+            'Alpha Trade Supplies Ltda.',
+            'GlobalTech Distribuidora',
+            'NovaPrime Importações',
+            'Mercury Logistics & Supply',
+            'BrightSource Comercial',
+            'EcoLine Fornecimentos',
+            'BlueBridge Partners',
+            'SupraMax Distribuidora',
+            'Vertex Industrial Solutions',
+            'GreenWave Comércio e Serviços',
+        ];
+
         return [
-            'name'         => $this->faker->name(),
+            'name'         => $this->faker->unique()->randomElement($names),
             'document'     => $this->faker->numerify('###########'),  // CPF fake (11 números)
             'email'        => $this->faker->safeEmail(),
             'phone'        => $this->faker->phoneNumber(),

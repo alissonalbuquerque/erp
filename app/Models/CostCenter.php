@@ -9,4 +9,7 @@ class CostCenter extends Model
 {
     /** @use HasFactory<\Database\Factories\CostCenterFactory> */
     use HasFactory;
+
+    protected $fillable = ['name', 'department'];
+    
 }

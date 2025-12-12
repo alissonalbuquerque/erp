@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
 
             $table->string('bank_name', 150);
-            $table->string('agency', 20)->nullable();
-            $table->string('account_number', 30)->nullable();
-            $table->string('account_type', 30)->nullable(); // corrente, poupança, etc
+            $table->string('agency', 20);
+            $table->string('account_number', 30);
+            $table->string('account_type', 30);
             
             $table->timestamps();
         });

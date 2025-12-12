@@ -9,4 +9,6 @@ class BankAccount extends Model
 {
     /** @use HasFactory<\Database\Factories\BankAccountFactory> */
     use HasFactory;
+
+    protected $fillable = ['bank_name', 'agency', 'account_number', 'account_type'];
 }

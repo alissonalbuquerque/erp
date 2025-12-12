@@ -16,8 +16,45 @@ class CostCenterFactory extends Factory
      */
     public function definition(): array
     {
+        $departments = [
+            'Financeiro',
+            'Recursos Humanos',
+            'Tecnologia da Informação',
+            'Comercial',
+            'Marketing',
+            'Operações',
+            'Logística',
+            'Compras',
+            'Produção',
+            'Jurídico',
+            'Atendimento ao Cliente',
+            'Contabilidade',
+            'Engenharia',
+        ];
+
+        $subAreas = [
+            'Administrativo',
+            'Planejamento',
+            'Controle',
+            'Projetos',
+            'Operacional',
+            'Infraestrutura',
+            'Suporte',
+            'Desenvolvimento',
+            'Expansão',
+            'Treinamento',
+            'Qualidade',
+            'Auditoria',
+            'Manutenção',
+        ];
+
+        $department  = $this->faker->randomElement($departments);
+        $subArea     = $this->faker->randomElement($subAreas);
+
         return [
-            //
+            'name'       => "{$department} – {$subArea}",
+            'department' => $department,
         ];
     }
+
 }

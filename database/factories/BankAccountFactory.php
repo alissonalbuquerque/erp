@@ -17,7 +17,26 @@ class BankAccountFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'bank_name' => $this->faker->randomElement([
+                'Banco do Brasil',
+                'Bradesco',
+                'Itaú',
+                'Caixa Econômica Federal',
+                'Santander',
+                'Sicredi',
+                'Nubank',
+                'Banco Inter',
+                'BTG Pactual',
+            ]),
+
+            'agency' => $this->faker->numerify('####'),             // 4 dígitos
+            'account_number' => $this->faker->numerify('######-#'), // padrão BR
+            'account_type' => $this->faker->randomElement([
+                'corrente',
+                'poupança',
+                'salário',
+                'pagamento',
+            ]),
         ];
     }
 }
